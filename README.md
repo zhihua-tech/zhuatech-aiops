@@ -19,6 +19,8 @@ ZhuaTech AIOps 面向 SRE、运维中心与业务技术团队，将指标、日�
 
 ![AIOps 一线值守工作台](docs/images/aiops-incident-h5.png)
 
+新增的事件关联引擎可将错误率、时延、受影响服务和近期变更统一评分，输出 P1–P4 事件等级、疑似根因与可执行处置清单。接口结果保留原始信号数量，便于接入告警中心后形成可解释的关联证据。
+
 ## 工程结构
 
 后端使用 Java 21、Spring Boot、Spring Security、JWT、JPA 与 Flyway，包名为 `cn.zhuatech.aiops`；前端使用 Vue 3、Pinia、Vue Router、Axios 与 Vite；生产数据库为 MySQL 8，测试数据库为 H2。
