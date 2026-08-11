@@ -46,3 +46,7 @@ npm run dev:demo
 | ![知华科技微信咨询二维码一](docs/images/zhuatech-wechat-consulting.png) | ![知华科技微信咨询二维码二](docs/images/zhuatech-wechat-consulting-2.png) |
 
 SEO 关键词：AIOps 源码、智能运维平台、可观测性、告警降噪、根因分析、Java AIOps、Vue 运维系统、知华科技。
+
+## 变更失败风险
+
+新增 `POST /api/aiops/insights/change-failure-risk`，结合影响服务、变更组件、测试、历史事故、回滚、业务高峰和依赖变更，输出 `LOW_RISK`、`REVIEW` 或 `BLOCK`。
