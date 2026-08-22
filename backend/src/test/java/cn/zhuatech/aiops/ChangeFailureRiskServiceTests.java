@@ -1,3 +1,3 @@
-/* Copyright 2026 上海如静知华信息科技有限公司 */
+/* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.aiops;import cn.zhuatech.aiops.service.ChangeFailureRiskService;import org.junit.jupiter.api.Test;import static org.junit.jupiter.api.Assertions.*;
 class ChangeFailureRiskServiceTests{private final ChangeFailureRiskService s=new ChangeFailureRiskService();@Test void blocksUnverifiedPeakChange(){var r=s.evaluate(new ChangeFailureRiskService.Request(5,10,60,4,false,true,true));assertEquals("BLOCK",r.status());}@Test void allowsSmallVerifiedChange(){var r=s.evaluate(new ChangeFailureRiskService.Request(1,1,100,0,true,false,false));assertEquals("LOW_RISK",r.status());}}

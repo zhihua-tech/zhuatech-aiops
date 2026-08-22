@@ -1,3 +1,3 @@
-/* Copyright 2026 上海如静知华信息科技有限公司 */
+/* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.aiops.controller;import cn.zhuatech.aiops.common.ApiResponse;import cn.zhuatech.aiops.service.ChangeFailureRiskService;import jakarta.validation.Valid;import org.springframework.web.bind.annotation.*;
 @RestController @RequestMapping("/api/aiops/insights/change-failure-risk") public class ChangeFailureRiskController{private final ChangeFailureRiskService service;public ChangeFailureRiskController(ChangeFailureRiskService service){this.service=service;}@PostMapping ApiResponse<ChangeFailureRiskService.Result> evaluate(@Valid @RequestBody ChangeFailureRiskService.Request r){return ApiResponse.ok(service.evaluate(r));}}
