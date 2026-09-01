@@ -50,3 +50,7 @@ SEO 关键词：AIOps 源码、智能运维平台、可观测性、告警降噪�
 ## 变更失败风险
 
 新增 `POST /api/aiops/insights/change-failure-risk`，结合影响服务、变更组件、测试、历史事故、回滚、业务高峰和依赖变更，输出 `LOW_RISK`、`REVIEW` 或 `BLOCK`。
+
+## 企业级自动修复执行门禁
+
+新增 `POST /api/enterprise/aiops/auto-remediation-execution`，覆盖运行手册、影响范围、预演、回滚、命令权限、集群健康和影响上限，返回 `EXECUTE / SUPERVISED / BLOCKED`。详见 [自动修复说明](docs/ENTERPRISE_AUTO_REMEDIATION.md)。
