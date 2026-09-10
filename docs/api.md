@@ -12,3 +12,5 @@
 | POST | `/api/shopfloor/ai-preview` | 调用可替换 AI Provider 生成根因建议 |
 | POST | `/api/shopfloor/incident-correlation` | 关联多源告警并输出事件等级、疑似原因与处置动作 |
 | POST | `/api/shopfloor/alert-routing` | 对重复告警分组、维护窗口抑制并按客户影响升级 |
+| POST | `/api/enterprise/aiops/auto-remediation-execution` | 校验自动修复执行与回滚门禁 |
+| POST | `/api/enterprise/aiops/slo-error-budget` | 计算错误预算、燃烧率与发布控制决策 |

@@ -14,5 +14,8 @@ import org.junit.jupiter.api.*; import org.springframework.beans.factory.annotat
         .andExpect(jsonPath("$.data.groupKey").value("order-api:high-latency"))
         .andExpect(jsonPath("$.data.suppressionMinutes").value(10))
         .andExpect(jsonPath("$.data.groupedOccurrences").value(8));}
+    @Test void operatorCanEvaluateSloErrorBudget()throws Exception{mvc.perform(post("/api/enterprise/aiops/slo-error-budget").header("Authorization","Bearer "+operatorToken).contentType(MediaType.APPLICATION_JSON).content("{\"serviceName\":\"orders\",\"windowMinutes\":43200,\"totalRequests\":1000000,\"failedRequests\":800,\"targetAvailabilityPercent\":99.9,\"shortWindowMinutes\":5,\"shortWindowRequests\":100000,\"shortWindowFailures\":40,\"longWindowMinutes\":60,\"longWindowRequests\":500000,\"longWindowFailures\":200,\"activeSev1\":false,\"changeInProgress\":false,\"rollbackReady\":true}"))
+        .andExpect(status().isOk()).andExpect(jsonPath("$.data.decision").value("REVIEW_CHANGES"))
+        .andExpect(jsonPath("$.data.budgetConsumedPercent").value(80.0));}
     @Test void anonymousRequestIsDenied()throws Exception{mvc.perform(get("/api/admin/dashboard")).andExpect(status().isForbidden());}
 }
