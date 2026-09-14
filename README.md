@@ -58,3 +58,7 @@ SEO 关键词：AIOps 源码、智能运维平台、可观测性、告警降噪�
 ## SLO 错误预算与发布控制
 
 `POST /api/enterprise/aiops/slo-error-budget` 计算周期错误预算和短/长窗口燃烧率，把稳定性目标直接转换为正常发布、SRE 复核、冻结变更、事件响应或回滚决策。接口可接入 CI/CD 发布门禁，详见 [SLO 错误预算说明](docs/ENTERPRISE_SLO_ERROR_BUDGET.md)。
+
+## 错误预算耗尽预测
+
+`POST /api/enterprise/aiops/slo-budget-forecast` 使用同一 SLO 周期的剩余失败次数和长窗口实际失败速率，估算指定分钟数内的失败量、剩余预算和预计耗尽时间；输出 `STABLE / WATCH / FORECAST_BREACH / EXHAUSTED` 以及发布建议。预测采用固定周期预算和恒定近期失败速率假设，不替代实时告警与人工事件响应。
