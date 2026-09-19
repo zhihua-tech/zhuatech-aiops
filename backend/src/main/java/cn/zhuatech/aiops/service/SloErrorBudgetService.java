@@ -12,9 +12,16 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 计算 SLO 错误预算、多窗口燃烧率，并给出变更冻结或回滚决策。 */
+/**
+ * 计算 SLO 错误预算、多窗口燃烧率，并给出变更冻结或回滚决策。
+ *
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class SloErrorBudgetService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public BudgetResult evaluate(BudgetRequest request) {
         validateCounts(request);
         double allowedErrorRate = 1d - request.targetAvailabilityPercent() / 100d;
@@ -61,6 +68,9 @@ public class SloErrorBudgetService {
                 shortBurn, longBurn, reasons, actions);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private void validateCounts(BudgetRequest request) {
         if (request.targetAvailabilityPercent() <= 0d || request.targetAvailabilityPercent() >= 100d) {
             throw new BusinessException("目标可用性必须大于 0 且小于 100");
@@ -72,14 +82,23 @@ public class SloErrorBudgetService {
         }
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private double burnRate(long failures, long requests, double allowedErrorRate) {
         return round((failures * 1d / requests) / allowedErrorRate);
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private double round(double value) {
         return Math.round(value * 100d) / 100d;
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private BudgetResult result(Decision decision, boolean deploymentAllowed, double consumed,
                                 double remaining, double shortBurn, double longBurn,
                                 List<String> reasons, List<String> actions) {
@@ -87,6 +106,9 @@ public class SloErrorBudgetService {
                 List.copyOf(reasons), List.copyOf(actions));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record BudgetRequest(
             @NotBlank String serviceName,
             @Positive int windowMinutes,
@@ -104,10 +126,16 @@ public class SloErrorBudgetService {
             boolean rollbackReady
     ) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record BudgetResult(Decision decision, boolean deploymentAllowed,
                                double budgetConsumedPercent, double budgetRemainingPercent,
                                double shortWindowBurnRate, double longWindowBurnRate,
                                List<String> reasons, List<String> actions) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum Decision { HEALTHY, REVIEW_CHANGES, FREEZE_CHANGES, INCIDENT, ROLLBACK }
 }

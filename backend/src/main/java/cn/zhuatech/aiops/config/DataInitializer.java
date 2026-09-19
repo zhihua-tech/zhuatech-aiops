@@ -1,7 +1,13 @@
 /* Copyright 2026 上海如静知华信息科技有限公司 · https://www.zhuatech.cn/ */
 package cn.zhuatech.aiops.config;
 import cn.zhuatech.aiops.model.*; import cn.zhuatech.aiops.repository.*; import org.springframework.boot.CommandLineRunner; import org.springframework.context.annotation.*; import org.springframework.security.crypto.password.PasswordEncoder; import java.time.LocalDate; import java.util.List;
-@Configuration public class DataInitializer {@Bean CommandLineRunner seed(OperatingUnitRepository units,WorkRecordRepository records,ResourceRegisterRepository resources,ReviewRecordRepository reviews,UserRepository users,PasswordEncoder encoder){return args->{if(units.count()>0)return;
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
+@Configuration public class DataInitializer {/**
+                                              * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+                                              */
+@Bean CommandLineRunner seed(OperatingUnitRepository units,WorkRecordRepository records,ResourceRegisterRepository resources,ReviewRecordRepository reviews,UserRepository users,PasswordEncoder encoder){return args->{if(units.count()>0)return;
  OperatingUnit trade=units.save(new OperatingUnit("OPS-TRADE","交易业务域","电商平台",9000)),pay=units.save(new OperatingUnit("OPS-PAY","支付业务域","支付平台",6000)),search=units.save(new OperatingUnit("OPS-SEARCH","搜索业务域","内容平台",3000));
  WorkRecord a=records.save(new WorkRecord("INC-260801-0842","SVC-ORDER-GW","订单网关 P99 延迟突增",trade,428,397,6,LocalDate.now().plusDays(1),WorkRecord.Status.RUNNING,"RCA-V3")); WorkRecord b=records.save(new WorkRecord("INC-260801-0791","SVC-PAY-CACHE","会员缓存集群连接抖动",pay,186,186,2,LocalDate.now(),WorkRecord.Status.COMPLETED,"RUNBOOK-V2")); WorkRecord c=records.save(new WorkRecord("INC-260801-0864","SVC-SEARCH-INDEX","搜索索引节点磁盘热点",search,268,156,9,LocalDate.now().plusDays(2),WorkRecord.Status.RELEASED,"DETECT-V4"));
  resources.saveAll(List.of(new ResourceRegister("SVC-ORDER-001","订单核心服务",trade,ResourceRegister.Status.RUNNING,96),new ResourceRegister("SVC-PAY-002","支付核心服务",pay,ResourceRegister.Status.RUNNING,92),new ResourceRegister("SVC-SEARCH-003","搜索与推荐",search,ResourceRegister.Status.ALARM,74)));

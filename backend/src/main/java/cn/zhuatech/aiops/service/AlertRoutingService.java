@@ -9,9 +9,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
-/** 对重复告警进行分组、维护窗口抑制和客户影响升级判断。 */
+/**
+ * 对重复告警进行分组、维护窗口抑制和客户影响升级判断。
+ *
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class AlertRoutingService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public RoutingResult route(RoutingRequest request) {
         List<String> reasons = new ArrayList<>();
         String route;
@@ -38,6 +45,9 @@ public class AlertRoutingService {
             "PAGE".equals(route) ? "立即通知值班人员并创建事件" : "SUPPRESS".equals(route) ? "维护结束后重新评估" : "合并证据后继续观察");
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record RoutingRequest(
         @NotBlank(message = "请输入服务名称") String serviceName,
         @NotBlank(message = "请输入告警名称") String alertName,
@@ -48,5 +58,8 @@ public class AlertRoutingService {
         boolean knownDuplicate
     ) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record RoutingResult(String route, String groupKey, int suppressionMinutes, int groupedOccurrences, List<String> reasons, String nextAction) {}
 }

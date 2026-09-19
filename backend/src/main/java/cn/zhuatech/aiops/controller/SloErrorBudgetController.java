@@ -9,15 +9,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/enterprise/aiops")
 public class SloErrorBudgetController {
     private final SloErrorBudgetService service;
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public SloErrorBudgetController(SloErrorBudgetService service) {
         this.service = service;
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/slo-error-budget")
     public ApiResponse<SloErrorBudgetService.BudgetResult> evaluate(
             @Valid @RequestBody SloErrorBudgetService.BudgetRequest request) {

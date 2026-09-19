@@ -8,9 +8,15 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 class SloBudgetForecastServiceTest {
     private final SloBudgetForecastService service = new SloBudgetForecastService(new SloErrorBudgetService());
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void forecastsBudgetBreachFromLongWindowFailureRate() {
         var result = service.forecast(new SloBudgetForecastService.ForecastRequest(budget(2, 3), 40));
@@ -21,6 +27,9 @@ class SloBudgetForecastServiceTest {
         assertFalse(result.deploymentAllowed());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void noRecentFailuresRemainStableWithoutFalseExhaustionTime() {
         var result = service.forecast(new SloBudgetForecastService.ForecastRequest(budget(2, 0), 30));
@@ -28,6 +37,9 @@ class SloBudgetForecastServiceTest {
         assertNull(result.estimatedMinutesToExhaustion());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void exhaustedBudgetCannotDeploy() {
         var result = service.forecast(new SloBudgetForecastService.ForecastRequest(budget(10, 1), 10));
@@ -35,12 +47,18 @@ class SloBudgetForecastServiceTest {
         assertFalse(result.deploymentAllowed());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @Test
     void invalidForecastHorizonIsRejected() {
         assertThrows(IllegalArgumentException.class, () -> service.forecast(
                 new SloBudgetForecastService.ForecastRequest(budget(2, 1), 0)));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private SloErrorBudgetService.BudgetRequest budget(long failures, long longWindowFailures) {
         return new SloErrorBudgetService.BudgetRequest("order-api", 1440, 1000, failures, 99,
                 5, 500, 0, 10, 1000, longWindowFailures,

@@ -6,15 +6,25 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import org.springframework.stereotype.Service;
 
-/** 使用长窗口实际失败速率，估计固定 SLO 周期剩余错误预算的耗尽时间。 */
+/**
+ * 使用长窗口实际失败速率，估计固定 SLO 周期剩余错误预算的耗尽时间。
+ *
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class SloBudgetForecastService {
     private final SloErrorBudgetService budgetService;
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public SloBudgetForecastService(SloErrorBudgetService budgetService) {
         this.budgetService = budgetService;
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public ForecastResult forecast(ForecastRequest request) {
         if (request.forecastMinutes() <= 0 || request.budget() == null
                 || request.budget().longWindowMinutes() <= 0
@@ -42,13 +52,22 @@ public class SloBudgetForecastService {
                 exhaustionMinutes, decision == ForecastDecision.STABLE && budget.deploymentAllowed());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     private double round(double value) {
         return Math.round(value * 100d) / 100d;
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record ForecastRequest(@NotNull @Valid SloErrorBudgetService.BudgetRequest budget,
                                   @Positive int forecastMinutes) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record ForecastResult(ForecastDecision forecastDecision,
                                  SloErrorBudgetService.Decision currentDecision,
                                  double remainingFailureAllowance,
@@ -58,5 +77,8 @@ public class SloBudgetForecastService {
                                  Double estimatedMinutesToExhaustion,
                                  boolean deploymentAllowed) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public enum ForecastDecision { STABLE, WATCH, FORECAST_BREACH, EXHAUSTED }
 }

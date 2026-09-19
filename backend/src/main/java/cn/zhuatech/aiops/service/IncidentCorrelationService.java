@@ -9,9 +9,16 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/** 将告警信号归并为可解释的事件等级和处置建议。 */
+/**
+ * 将告警信号归并为可解释的事件等级和处置建议。
+ *
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @Service
 public class IncidentCorrelationService {
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public CorrelationResult correlate(CorrelationRequest request) {
         int score = Math.min(100,
             request.signals().size() * 8
@@ -30,6 +37,9 @@ public class IncidentCorrelationService {
         return new CorrelationResult(severity, score, suspectedCause, List.copyOf(actions), request.signals().size());
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record CorrelationRequest(
         @NotEmpty(message = "请至少提交一个告警信号") List<String> signals,
         @Positive(message = "受影响服务数必须大于 0") int affectedServices,
@@ -38,5 +48,8 @@ public class IncidentCorrelationService {
         boolean recentChange
     ) {}
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public record CorrelationResult(String severity, int correlationScore, String suspectedCause, List<String> actions, int signalCount) {}
 }

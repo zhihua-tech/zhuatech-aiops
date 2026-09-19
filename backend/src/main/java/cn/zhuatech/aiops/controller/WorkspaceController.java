@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
 
+/**
+ * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+ */
 @RestController
 @RequestMapping("/api/shopfloor")
 @PreAuthorize("hasAnyRole('DOMAIN_USER','ADMIN')")
@@ -22,6 +25,9 @@ public class WorkspaceController {
     private final IncidentCorrelationService correlation;
     private final AlertRoutingService alertRouting;
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     public WorkspaceController(AiopsService service, AiProvider ai, IncidentCorrelationService correlation, AlertRoutingService alertRouting) {
         this.service = service;
         this.ai = ai;
@@ -29,24 +35,39 @@ public class WorkspaceController {
         this.alertRouting = alertRouting;
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @GetMapping("/dashboard")
     public ApiResponse<Dashboard> dashboard() { return ApiResponse.ok(service.shopfloorDashboard()); }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/work-orders/{id}/reports")
     public ApiResponse<ReportResult> report(@PathVariable Long id, @Valid @RequestBody ReportRequest request) {
         return ApiResponse.ok("反馈提交成功", service.report(id, request));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/ai-preview")
     public ApiResponse<AiProvider.AiResult> preview(@RequestBody Map<String, String> body) {
         return ApiResponse.ok(ai.execute(body.getOrDefault("prompt", ""), Map.of("mode", "demo")));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/incident-correlation")
     public ApiResponse<IncidentCorrelationService.CorrelationResult> correlate(@Valid @RequestBody IncidentCorrelationService.CorrelationRequest request) {
         return ApiResponse.ok("事件关联分析完成", correlation.correlate(request));
     }
 
+    /**
+     * 商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。
+     */
     @PostMapping("/alert-routing")
     public ApiResponse<AlertRoutingService.RoutingResult> routeAlert(@Valid @RequestBody AlertRoutingService.RoutingRequest request) {
         return ApiResponse.ok("告警路由决策完成", alertRouting.route(request));
