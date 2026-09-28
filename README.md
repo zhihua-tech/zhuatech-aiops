@@ -1,5 +1,7 @@
 # ZhuaTech AIOps｜知华科技企业智能运维与可观测平台
 
+[简体中文](README.md) | [English](README.en.md)
+
 > 用可观测数据、AI 根因分析与受控自动化，构建从异常发现到恢复验证的运维闭环。
 
 [知华科技官网](https://www.zhuatech.cn/) · [架构说明](docs/architecture.md) · [API 文档](docs/api.md) · [部署指南](deploy/README.md)
