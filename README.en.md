@@ -1,5 +1,9 @@
 [简体中文](README.md) | **English**
 
+## Functional update: Anchored-window alert deduplication
+
+Deduplicates alerts by environment, service and fingerprint within a fixed window anchored to the first event, preserving source IDs and peak severity. Available to signed-in users with editable inputs, explicit validation and JSON export. See [API, examples and limitations](docs/AI_BUSINESS_UPGRADE_20261023.md). No external model calls or automatic business changes. Existing license and contact details are retained.
+
 # ZhuaTech AIOps
 
 > A source-available enterprise project by [ZhuaTech](https://www.zhuatech.cn/) for enterprise AI-assisted workflows with human governance.
