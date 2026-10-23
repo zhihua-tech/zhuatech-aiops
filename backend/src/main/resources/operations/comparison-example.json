@@ -1,0 +1,6 @@
+{
+  "patch": {
+    "longErrors": "20"
+  },
+  "description": "长窗错误改为20"
+}

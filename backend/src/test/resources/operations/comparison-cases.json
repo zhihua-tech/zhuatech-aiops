@@ -1,0 +1,60 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "HOLD",
+      "shortBurn": "#10",
+      "longBurn": "#3"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "HOLD",
+      "shortBurn": "#10",
+      "longBurn": "#3"
+    }
+  },
+  {
+    "patch": {
+      "longErrors": "20"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "HOLD",
+      "shortBurn": "#10",
+      "longBurn": "#3"
+    }
+  },
+  {
+    "patch": {
+      "shortErrors": "5",
+      "longErrors": "20"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "HOLD",
+      "shortBurn": "#10",
+      "longBurn": "#3"
+    }
+  },
+  {
+    "patch": {
+      "shortErrors": "4",
+      "longErrors": "30"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false,
+    "baseline": {
+      "decision": "HOLD",
+      "shortBurn": "#10",
+      "longBurn": "#3"
+    }
+  }
+]
