@@ -1,0 +1,98 @@
+{
+  "slug": "aiops",
+  "title": "双时间窗错误预算燃烧核对",
+  "fields": [
+    {
+      "key": "id",
+      "label": "记录编号",
+      "type": "ID"
+    },
+    {
+      "key": "shortRequests",
+      "label": "短窗请求",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "1",
+      "max": "1000000000"
+    },
+    {
+      "key": "shortErrors",
+      "label": "短窗错误",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000000"
+    },
+    {
+      "key": "longRequests",
+      "label": "长窗请求",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "1",
+      "max": "1000000000"
+    },
+    {
+      "key": "longErrors",
+      "label": "长窗错误",
+      "type": "NUMBER",
+      "scale": 0,
+      "min": "0",
+      "max": "1000000000"
+    },
+    {
+      "key": "targetSuccess",
+      "label": "目标成功率%",
+      "type": "NUMBER",
+      "scale": 4,
+      "min": "0",
+      "max": "100"
+    },
+    {
+      "key": "shortLimit",
+      "label": "短窗燃烧阈值",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    },
+    {
+      "key": "longLimit",
+      "label": "长窗燃烧阈值",
+      "type": "NUMBER",
+      "scale": 6,
+      "min": "0",
+      "max": "1000000000000"
+    }
+  ],
+  "columns": [
+    {
+      "key": "shortBurn",
+      "label": "短窗燃烧倍数"
+    },
+    {
+      "key": "longBurn",
+      "label": "长窗燃烧倍数"
+    }
+  ],
+  "description": "同时核对长、短时间窗的SLO错误预算燃烧倍数，仅双窗同时越线时给出阻断级别，单窗越线提示复核。不执行自动处置。",
+  "owner": "上海如静知华信息科技有限公司",
+  "website": "https://www.zhuatech.cn/",
+  "authorization": "商业授权或定制开发请微信添加微信号zhuatech或zhuatech2进行咨询。",
+  "version": 1,
+  "notes": "输入均须为已获授权的同口径数据。金额固定人民币元；比例为百分数。核算结果只用于复核，未审批、未写库、未发起外部调用，也未触发付款、签名、资料销毁或设备控制。建议不构成法律、安全、会计或碳核证结论。",
+  "sample": {
+    "asOf": "2026-10-23",
+    "records": [
+      {
+        "id": "ITEM-001",
+        "shortRequests": "1000",
+        "shortErrors": "10",
+        "longRequests": "10000",
+        "longErrors": "30",
+        "targetSuccess": "99.9",
+        "shortLimit": "5",
+        "longLimit": "2"
+      }
+    ]
+  }
+}

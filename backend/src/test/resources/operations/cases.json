@@ -1,0 +1,61 @@
+[
+  {
+    "patch": {},
+    "expected": {
+      "decision": "HOLD",
+      "shortBurn": "#10",
+      "longBurn": "#3"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "longErrors": "20"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "shortErrors": "5",
+      "longErrors": "20"
+    },
+    "expected": {
+      "decision": "PASS"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "shortErrors": "4",
+      "longErrors": "30"
+    },
+    "expected": {
+      "decision": "REVIEW"
+    },
+    "error": false
+  },
+  {
+    "patch": {
+      "shortErrors": "31"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "targetSuccess": "100"
+    },
+    "expected": {},
+    "error": true
+  },
+  {
+    "patch": {
+      "shortRequests": "10001"
+    },
+    "expected": {},
+    "error": true
+  }
+]
